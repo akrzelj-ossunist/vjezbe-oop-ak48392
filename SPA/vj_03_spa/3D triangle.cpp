@@ -103,6 +103,7 @@ void delete_struct(Object_3D O)
 {
 	O.Tr_number = 0;
 	free(O.Tr_arr);
+	free(O.p);
 }
 
 int main()
