@@ -87,7 +87,6 @@ void write_text(Object_3D O)
 	for (int cnt = 0; cnt != 1404; cnt++)
 	{
 		fprintf(fp1, "  facet normal %d %d %d\n", O.Tr_arr[cnt].normal, O.Tr_arr[cnt].normal, O.Tr_arr[cnt].normal);
-		printf("%d %d %d\n", O.Tr_arr[cnt].normal, O.Tr_arr[cnt].normal, O.Tr_arr[cnt].normal);
 		fprintf(fp1, "    outer loop\n");
 		fprintf(fp1, "      vertex %.1f %.1f %.1f\n", O.p[cnt].x1, O.p[cnt].x2, O.p[cnt].x3);
 		fprintf(fp1, "      vertex %.1f %.1f %.1f\n", O.p[cnt].y1, O.p[cnt].y2, O.p[cnt].y3);
