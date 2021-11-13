@@ -6,7 +6,11 @@ punjenju. Može pucati (shoot) i ponovo se puniti (reload).
 lijevom i gornjom desnom točkom. Ima dva stanja: pogođena i nepogođena.
 
 4. Napisati program koji će generirati n meta i jednog pucača (oružje). Uz pretpostavku
-da je položaj oružja horizontalan i da se oružje može zakretati za 360◦, izračunati koliko je meta pogođeno jednim punjenjem.*/#include <iostream>
+da je položaj oružja horizontalan i da se oružje može zakretati za 360◦, izračunati 
+koliko je meta pogođeno jednim punjenjem.
+*/
+
+#include <iostream>
 #include <iomanip>
 #include <string>
 #include <algorithm>
@@ -69,7 +73,7 @@ void shoot_and_reload(Guns G, Target* (&T), int num, int br, int* (&count), int&
 				{
 					T[j].hit += 1;
 					sum++;
-					count[cnt] = T[j].hit;
+
 				}
 				else
 					T[j].missed += 1;
