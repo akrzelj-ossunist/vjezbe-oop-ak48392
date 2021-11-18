@@ -84,13 +84,5 @@ void main()
 	Object_3D O = read_binary(Header);
 	write_binary(Header, O);
 	write_txt(O);
-
-
-	printf("%d", O.T[0][0].n);
-
-
 	free_triangle(O);
-
-
-	printf("%d", O.T[0][0].n);
 }
