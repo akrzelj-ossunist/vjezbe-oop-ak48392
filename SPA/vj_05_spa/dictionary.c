@@ -92,5 +92,10 @@ void print(Dictionary dict)
 
 void destroy(Dictionary dict)
 {
-	dict = NULL;
+	while (dict != NULL)
+	{
+		Dictionary tmp = dict;
+		dict = dict->next;
+		free(tmp);
+	}
 }
