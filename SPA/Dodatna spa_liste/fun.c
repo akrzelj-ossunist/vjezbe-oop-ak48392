@@ -18,7 +18,7 @@ LongNumber read_longnum(char* fname)
 	char c;
 	while ((c=fgetc(fp)) != EOF)
 	{
-		LongNumber novi = (LongNumber)malloc(sizeof(LongNumber));
+		LongNumber novi = (LongNumber)malloc(sizeof(Digit));
 		novi->z = c - '0';
 		novi->next = lst;
 		lst = novi;
@@ -32,7 +32,7 @@ LongNumber reverse(LongNumber num)
 	LongNumber tmp = NULL;
 	while (num != NULL)
 	{
-		LongNumber novi = (LongNumber)malloc(sizeof(LongNumber));
+		LongNumber novi = (LongNumber)malloc(sizeof(Digit));
 		novi->z = num->z;
 		novi->next = tmp;
 		tmp = novi;
@@ -49,7 +49,7 @@ LongNumber add_longnum(LongNumber a, LongNumber b)
 	int rest = 0;
 	while (a != NULL && b != NULL)
 	{
-		LongNumber novi = (LongNumber)malloc(sizeof(LongNumber));
+		LongNumber novi = (LongNumber)malloc(sizeof(Digit));
 		int total = a->z + b->z;
 		novi->z = total % 10 + rest;
 		rest = total / 10;
@@ -61,7 +61,7 @@ LongNumber add_longnum(LongNumber a, LongNumber b)
 	if (a != NULL)
 	{
 		while (a != NULL) {
-			LongNumber novi = (LongNumber)malloc(sizeof(LongNumber));
+			LongNumber novi = (LongNumber)malloc(sizeof(Digit));
 			int total = rest + a->z;
 			novi->z = total % 10;
 			rest = total / 10;
@@ -73,7 +73,7 @@ LongNumber add_longnum(LongNumber a, LongNumber b)
 	if (b != NULL)
 	{
 		while (b != NULL) {
-			LongNumber novi = (LongNumber)malloc(sizeof(LongNumber));
+			LongNumber novi = (LongNumber)malloc(sizeof(Digit));
 			int total = rest + b->z;
 			novi->z = total % 10;
 			rest = total / 10;
@@ -84,7 +84,7 @@ LongNumber add_longnum(LongNumber a, LongNumber b)
 	}
 	if (rest > 0)
 	{
-		LongNumber novi = (LongNumber)malloc(sizeof(LongNumber));
+		LongNumber novi = (LongNumber)malloc(sizeof(Digit));
 		novi->z = rest;
 		novi->next = tmp;
 		tmp = novi;
@@ -100,7 +100,7 @@ LongNumber mul_by_digit(LongNumber num, int z)
 	int rest = 0;
 	while (num != NULL)
 	{
-		LongNumber novi = (LongNumber)malloc(sizeof(LongNumber));
+		LongNumber novi = (LongNumber)malloc(sizeof(Digit));
 		int total = num->z * z + rest;
 		novi->z = total % 10;
 		rest = total / 10;
@@ -110,7 +110,7 @@ LongNumber mul_by_digit(LongNumber num, int z)
 	}
 	if (rest > 0)
 	{
-		LongNumber novi = (LongNumber)malloc(sizeof(LongNumber));
+		LongNumber novi = (LongNumber)malloc(sizeof(Digit));
 		novi->z = rest;
 		novi->next = tmp;
 		tmp = novi;
@@ -128,7 +128,7 @@ LongNumber mul_by_pow10(LongNumber num, int pow)
 	LongNumber tmp = NULL;
 	while (pow > 0)
 	{
-		LongNumber novi = (LongNumber)malloc(sizeof(LongNumber));
+		LongNumber novi = (LongNumber)malloc(sizeof(Digit));
 		novi->z = 0;
 		novi->next = tmp;
 		tmp = novi;
@@ -136,7 +136,7 @@ LongNumber mul_by_pow10(LongNumber num, int pow)
 	}
 	while (num != NULL)
 	{
-		LongNumber novi = (LongNumber)malloc(sizeof(LongNumber));
+		LongNumber novi = (LongNumber)malloc(sizeof(Digit));
 		novi->z = num->z;
 		novi->next = tmp;
 		tmp = novi;
@@ -152,7 +152,7 @@ LongNumber mul_longnum(LongNumber a, LongNumber b)
 	LongNumber old = NULL;
 	while (b != NULL)
 	{
-		LongNumber novi = (LongNumber)malloc(sizeof(LongNumber));
+		LongNumber novi = (LongNumber)malloc(sizeof(Digit));
 		novi = mul_by_digit(a, b->z);
 		novi = mul_by_pow10(novi, pow);
 		//printf("NOVI: \n");
