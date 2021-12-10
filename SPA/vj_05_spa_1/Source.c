@@ -69,31 +69,18 @@ int filter(Word* w)
 Dictionary filterDictionary(Dictionary indict, int (*filter)(Word* w))
 {
 	Dictionary temp = indict;
-	Dictionary temp1 = indict->next;
 
-
-	while (temp1 != NULL)
+	while (temp->next != NULL)
 	{
-		int Bool = filter(temp1);
+		int Bool = filter(temp->next);
 		if (Bool == 0)
-		{
-			temp->next = temp1->next;
-			free(temp1);
-			temp1 = temp->next;
-		}
+			temp->next = temp->next->next;
 		else
-		{
-			temp1 = temp1->next;
 			temp = temp->next;
-		}
 	}
 	int Bool = filter(indict);
 	if (Bool == 0)
-	{
-		temp = indict;
 		indict = indict->next;
-		free(temp);
-	}
 	return indict;
 }
 
