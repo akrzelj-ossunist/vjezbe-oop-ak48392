@@ -48,25 +48,39 @@ void add(heap* h, int element)
 }
 void fix_bottom(heap* s, int n)
 {
+
 	int l = 2 * n + 1;
 	int d = 2 * n + 2;
+	
 	if (l >= s->br && d >= s->br)
 		return;
-	else if (s->arr[n].num < s->arr[l].num || s->arr[n].num < s->arr[d].num)
-	{
+
+	if (l < s->br && d < s->br) {
+		 if (s->arr[n].num < s->arr[l].num || s->arr[n].num < s->arr[d].num)
+		 {
+			if (s->arr[l].num > s->arr[d].num)
+			{
+				int temp = s->arr[l].num;
+				s->arr[l].num = s->arr[n].num;
+				s->arr[n].num = temp;
+				fix_bottom(s, l);
+			}
+			else if (s->arr[d].num > s->arr[l].num)
+			{
+				int temp = s->arr[n].num;
+				s->arr[n].num = s->arr[d].num;
+				s->arr[d].num = temp;
+				fix_bottom(s, d);
+			}
+		 }
+	}
+	else if (l < s->br) {
 		if (s->arr[l].num > s->arr[d].num)
 		{
 			int temp = s->arr[l].num;
 			s->arr[l].num = s->arr[n].num;
 			s->arr[n].num = temp;
 			fix_bottom(s, l);
-		}
-		else if (s->arr[d].num > s->arr[l].num)
-		{
-			int temp = s->arr[n].num;
-			s->arr[n].num = s->arr[d].num;
-			s->arr[d].num = temp;
-			fix_bottom(s, d);
 		}
 	}
 }
@@ -81,6 +95,13 @@ void main()
 {
 	heap* arr = create();
 
+	add(arr, 12);
+	add(arr, 11);
+	add(arr, 10);
+	add(arr, 9);
+	add(arr, 8);
+	add(arr, 7);
+	add(arr, 6);
 	add(arr, 5);
 	add(arr, 4);
 	add(arr, 3);
@@ -94,5 +115,3 @@ void main()
 
 	destroy(arr);
 }
-
-
