@@ -40,17 +40,17 @@ void Insert(HashTable* ht, char* word)
     int key = hash(word) % ht->size;
 
     if (ht->table[key] == NULL) {
-        Bin* newSlot = (Bin*)malloc(sizeof(Bin));
-        newSlot->word = _strdup(word);
-        newSlot->next = NULL;
-        ht->table[key] = newSlot;
+        Bin* novi = (Bin*)malloc(sizeof(Bin));
+        novi->word = _strdup(word);
+        novi->next = NULL;
+        ht->table[key] = novi;
     }  
     else
     {
-        Bin* lastWord = ht->table[key];
-        Bin* newSlot = (Bin*)malloc(sizeof(Bin));
-        newSlot->word = _strdup(word);
-        newSlot->next = lastWord; 
+        Bin* tmp = ht->table[key];
+        Bin* novi = (Bin*)malloc(sizeof(Bin));
+        novi->word = _strdup(word);
+        novi->next = tmp; 
     }
     (ht->load)++;
 }
